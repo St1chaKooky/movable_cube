@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movable_cube/utils/colors.dart';
 
-class MyButton extends StatelessWidget {
+class MyButton extends StatefulWidget {
   final bool active;
   final Function fun;
   final String text;
@@ -9,12 +9,17 @@ class MyButton extends StatelessWidget {
       {super.key, required this.fun, required this.text, required this.active});
 
   @override
+  State<MyButton> createState() => _MyButtonState();
+}
+
+class _MyButtonState extends State<MyButton> {
+  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
-          if (active == true) {
+          if (widget.active == true) {
             return MyColors.amberActiveColor;
           } else {
             return MyColors.amberDisActiveColor;
@@ -22,13 +27,15 @@ class MyButton extends StatelessWidget {
         }),
       ),
       onPressed: () {
-        fun();
+        setState(() {
+          widget.fun();
+        });
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
         child: Text(
-          text,
-          style: active == true ? theme.labelSmall : theme.labelMedium,
+          widget.text,
+          style: widget.active == true ? theme.labelSmall : theme.labelMedium,
         ),
       ),
     );
