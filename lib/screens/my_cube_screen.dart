@@ -13,63 +13,63 @@ class MyCubeScreen extends StatefulWidget {
 class _MyCubeScreenState extends State<MyCubeScreen> {
   double currentPositionX = 1;
   double currentPositionY = 1;
-  bool up = true;
-  bool left = true;
-  bool down = true;
-  bool right = true;
+  bool isUpMovingPossible = true;
+  bool isLeftMovingPossible = true;
+  bool isDownMovingPossible = true;
+  bool isRightMovingPossible = true;
 
-  void upFun() {
+  void isUpMoving() {
     if (currentPositionY != 2) {
       currentPositionY += 1;
     }
     setState(() {
-      down = true;
+      isDownMovingPossible = true;
       if (currentPositionY == 2) {
-        up = false;
+        isUpMovingPossible = false;
       } else {
-        up = true;
+        isUpMovingPossible = true;
       }
     });
   }
 
-  void leftFun() {
+  void isLeftMoving() {
     if (currentPositionX != 0) {
       currentPositionX -= 1;
     }
     setState(() {
-      right = true;
+      isRightMovingPossible = true;
       if (currentPositionX == 0) {
-        left = false;
+        isLeftMovingPossible = false;
       } else {
-        left = true;
+        isLeftMovingPossible = true;
       }
     });
   }
 
-  void rightFun() {
+  void isRightMoving() {
     if (currentPositionX != 2) {
       currentPositionX += 1;
     }
     setState(() {
-      left = true;
+      isLeftMovingPossible = true;
       if (currentPositionX == 2) {
-        right = false;
+        isRightMovingPossible = false;
       } else {
-        right = true;
+        isRightMovingPossible = true;
       }
     });
   }
 
-  void downFun() {
+  void isDownMoving() {
     if (currentPositionY != 0) {
       currentPositionY -= 1;
     }
     setState(() {
-      up = true;
+      isUpMovingPossible = true;
       if (currentPositionY == 0) {
-        down = false;
+        isDownMovingPossible = false;
       } else {
-        down = true;
+        isDownMovingPossible = true;
       }
     });
   }
@@ -105,9 +105,9 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
             height: 20,
           ),
           MyButton(
-            fun: upFun,
+            onTapButton: isUpMoving,
             text: 'Выше',
-            active: up,
+            isActive: isUpMovingPossible,
           ),
           const SizedBox(
             height: 15,
@@ -116,14 +116,14 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               MyButton(
-                fun: leftFun,
+                onTapButton: isLeftMoving,
                 text: 'Влево',
-                active: left,
+                isActive: isLeftMovingPossible,
               ),
               MyButton(
-                fun: rightFun,
+                onTapButton: isRightMoving,
                 text: 'Вправо',
-                active: right,
+                isActive: isRightMovingPossible,
               ),
             ],
           ),
@@ -131,9 +131,9 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
             height: 15,
           ),
           MyButton(
-            fun: downFun,
+            onTapButton: isDownMoving,
             text: 'Ниже',
-            active: down,
+            isActive: isDownMovingPossible,
           ),
         ],
       ),

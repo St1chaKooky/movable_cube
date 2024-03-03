@@ -9,6 +9,6 @@ final theme = ThemeData(
     useMaterial3: true,
     textTheme: const TextTheme(
         labelMedium:
-            TextStyle(color: MyColors.textDisActiveColor, fontSize: 16),
-        labelSmall: TextStyle(color: MyColors.textActiveColor, fontSize: 16),
+            TextStyle(color: MyColors.textDisActiveColor, fontSize: 12),
+        labelSmall: TextStyle(color: MyColors.textActiveColor, fontSize: 12),
         titleMedium: TextStyle(color: MyColors.whiteColor, fontSize: 20)));
