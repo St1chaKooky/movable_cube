@@ -10,7 +10,7 @@ class MyCubeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Positioned(
-      bottom: 400 / 2 * y - 20 * y,
+      bottom: 200 / 2 * y - 20 * y,
       left: screenWidth / 2 * x - 20 * x,
       child: Container(
         width: 40,

@@ -90,7 +90,7 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
         children: [
           Container(
             width: double.infinity,
-            height: 400,
+            height: 200,
             color: MyColors.grayColor,
             child: Stack(
               children: [
@@ -102,7 +102,7 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
             ),
           ),
           const SizedBox(
-            height: 50,
+            height: 20,
           ),
           MyButton(
             fun: upFun,
@@ -110,7 +110,7 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
             active: up,
           ),
           const SizedBox(
-            height: 30,
+            height: 15,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -128,7 +128,7 @@ class _MyCubeScreenState extends State<MyCubeScreen> {
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: 15,
           ),
           MyButton(
             fun: downFun,

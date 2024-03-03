@@ -32,7 +32,7 @@ class _MyButtonState extends State<MyButton> {
         });
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
         child: Text(
           widget.text,
           style: widget.active == true ? theme.labelSmall : theme.labelMedium,
