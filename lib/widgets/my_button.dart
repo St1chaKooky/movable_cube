@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:movable_cube/utils/colors.dart';
 
 class MyButton extends StatefulWidget {
+  // isActive
   final bool active;
+  // onPress или onTap
+  // И функция должны быть описана полностью,
+  // что должна возвращать и что должна принимать
   final Function fun;
   final String text;
   const MyButton(

@@ -13,11 +13,14 @@ class MyCubeScreen extends StatefulWidget {
 class _MyCubeScreenState extends State<MyCubeScreen> {
   double currentPositionX = 1;
   double currentPositionY = 1;
+  // названия полей должны быть более осмысленные
+  // isUpMovingPossible к примеру
   bool up = true;
   bool left = true;
   bool down = true;
   bool right = true;
 
+  // тоже самое с названием методов
   void upFun() {
     if (currentPositionY != 2) {
       currentPositionY += 1;
