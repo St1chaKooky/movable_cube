@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:movable_cube/utils/colors.dart';
 
-class MyButton extends StatefulWidget {
+
+class MyButtonRoute extends StatefulWidget {
   final bool isActive;
-  final void Function() onTapButton;
+  final Future<dynamic> onTapButton;
   final String text;
-  const MyButton(
+  const MyButtonRoute(
       {super.key,
       required this.onTapButton,
       required this.text,
       required this.isActive});
 
   @override
-  State<MyButton> createState() => _MyButtonState();
+  State<MyButtonRoute> createState() => _MyButtonRouteState();
 }
 
-class _MyButtonState extends State<MyButton> {
+class _MyButtonRouteState extends State<MyButtonRoute> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).textTheme;
@@ -23,16 +23,18 @@ class _MyButtonState extends State<MyButton> {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith<Color?>((states) {
           if (widget.isActive == true) {
-            return MyColors.amberActiveColor;
+            return const Color.fromARGB(255, 7, 106, 255);
           } else {
-            return MyColors.amberDisActiveColor;
+            return const  Color.fromARGB(255, 91, 129, 185);
           }
         }),
       ),
-      onPressed: () {
+      onPressed:(){
         setState(() {
-          widget.onTapButton();
+        widget.onTapButton;
+          
         });
+        
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 12),
