@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movable_cube/changeNotifare/changeNotifare.dart';
+import 'package:movable_cube/changeNotifare/notifare_cube_current_position.dart';
 import 'package:movable_cube/utils/colors.dart';
 import 'package:movable_cube/widgets/my_button.dart';
 import 'package:movable_cube/widgets/my_cube_widget.dart';
@@ -12,8 +12,8 @@ class MyBlocCubeScreen extends StatefulWidget {
 }
 
 class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
-
- final stateCubeNotifare = CurrentPositionState(1, 1, true, true, true, true);
+  final stateCubeNotifare =
+      CubeCurrentPositionState(1, 1, true, true, true, true);
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +36,11 @@ class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
             child: Stack(
               children: [
                 ListenableBuilder(
-                  listenable: stateCubeNotifare, 
-                  builder: (context, child) =>MyCubeWidget(x: stateCubeNotifare.currentPositionX,y: stateCubeNotifare.currentPositionY,)
-                ),
+                    listenable: stateCubeNotifare,
+                    builder: (context, child) => MyCubeWidget(
+                          x: stateCubeNotifare.currentPositionX,
+                          y: stateCubeNotifare.currentPositionY,
+                        )),
               ],
             ),
           ),
@@ -46,14 +48,13 @@ class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
             height: 20,
           ),
           ListenableBuilder(
-                  listenable: stateCubeNotifare, 
-                  builder: (context, child) =>MyButton(
-            onTapButton: stateCubeNotifare.isUpMoving,
-            text: 'Выше',
-            isActive: stateCubeNotifare.isUpMovingPossible,
+            listenable: stateCubeNotifare,
+            builder: (context, child) => MyButton(
+              onTapButton: stateCubeNotifare.isUpMoving,
+              text: 'Выше',
+              isActive: stateCubeNotifare.isUpMovingPossible,
+            ),
           ),
-                ),
-          
           const SizedBox(
             height: 15,
           ),
@@ -61,36 +62,34 @@ class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ListenableBuilder(
-                  listenable: stateCubeNotifare, 
-                  builder: (context, child) =>MyButton(
-                onTapButton: stateCubeNotifare.isLeftMoving,
-                text: 'Влево',
-                isActive: stateCubeNotifare.isLeftMovingPossible,
-              ),
+                listenable: stateCubeNotifare,
+                builder: (context, child) => MyButton(
+                  onTapButton: stateCubeNotifare.isLeftMoving,
+                  text: 'Влево',
+                  isActive: stateCubeNotifare.isLeftMovingPossible,
                 ),
+              ),
               ListenableBuilder(
-                  listenable: stateCubeNotifare, 
-                  builder: (context, child) =>MyButton(
-                onTapButton: stateCubeNotifare.isRightMoving,
-                text: 'Вправо',
-                isActive: stateCubeNotifare.isRightMovingPossible,
-              ),
+                listenable: stateCubeNotifare,
+                builder: (context, child) => MyButton(
+                  onTapButton: stateCubeNotifare.isRightMoving,
+                  text: 'Вправо',
+                  isActive: stateCubeNotifare.isRightMovingPossible,
                 ),
-              
+              ),
             ],
           ),
           const SizedBox(
             height: 15,
           ),
           ListenableBuilder(
-                  listenable: stateCubeNotifare, 
-                  builder: (context, child) =>MyButton(
-            onTapButton: stateCubeNotifare.isDownMoving,
-            text: 'Ниже',
-            isActive: stateCubeNotifare.isDownMovingPossible,
+            listenable: stateCubeNotifare,
+            builder: (context, child) => MyButton(
+              onTapButton: stateCubeNotifare.isDownMoving,
+              text: 'Ниже',
+              isActive: stateCubeNotifare.isDownMovingPossible,
+            ),
           ),
-                ),
-          
         ],
       ),
     );

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
-
-import 'package:movable_cube/widgets/my_rout_button.dart';
+import 'package:movable_cube/widgets/my_button.dart';
 
 class MyStartScreen extends StatefulWidget {
   const MyStartScreen({super.key});
@@ -16,10 +14,24 @@ class _MyStartScreenState extends State<MyStartScreen> {
     return Scaffold(
       appBar: AppBar(title: const Text('Hi dude!')),
       body: Center(
-        child: Row(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            MyButtonRoute(onTapButton: Navigator.of(context).pushNamed('/first'), text: 'Go Bloc page', isActive: true),
-            MyButtonRoute(onTapButton: Navigator.of(context).pushNamed('/second'), text: 'Go Change page', isActive: true),
+            MyButton(
+                onTapButton: () {
+                  Navigator.of(context).pushNamed('/fields');
+                },
+                text: 'Go Fields page',
+                isActive: true),
+            const SizedBox(
+              height: 10,
+            ),
+            MyButton(
+                onTapButton: () {
+                  Navigator.of(context).pushNamed('/second');
+                },
+                text: 'Go Cube page',
+                isActive: true),
           ],
         ),
       ),

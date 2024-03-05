@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CurrentPositionState extends ChangeNotifier {
+class CubeCurrentPositionState extends ChangeNotifier {
   double _currentPositionX;
   double _currentPositionY;
 
@@ -9,8 +9,14 @@ class CurrentPositionState extends ChangeNotifier {
   bool _isDownMovingPossible;
   bool _isRightMovingPossible;
 
-  CurrentPositionState(this._currentPositionX,this._currentPositionY,this._isDownMovingPossible,this._isLeftMovingPossible,this._isRightMovingPossible,this._isUpMovingPossible);
-  
+  CubeCurrentPositionState(
+      this._currentPositionX,
+      this._currentPositionY,
+      this._isDownMovingPossible,
+      this._isLeftMovingPossible,
+      this._isRightMovingPossible,
+      this._isUpMovingPossible);
+
   double get currentPositionX => _currentPositionX;
   double get currentPositionY => _currentPositionY;
 
@@ -19,17 +25,16 @@ class CurrentPositionState extends ChangeNotifier {
   bool get isDownMovingPossible => _isDownMovingPossible;
   bool get isRightMovingPossible => _isRightMovingPossible;
 
-
   void isUpMoving() {
     if (_currentPositionY != 2) {
       _currentPositionY += 1;
     }
     _isDownMovingPossible = true;
-      if (currentPositionY == 2) {
-        _isUpMovingPossible = false;
-      } else {
-        _isUpMovingPossible = true;
-      }
+    if (currentPositionY == 2) {
+      _isUpMovingPossible = false;
+    } else {
+      _isUpMovingPossible = true;
+    }
     notifyListeners();
   }
 
@@ -38,13 +43,12 @@ class CurrentPositionState extends ChangeNotifier {
       _currentPositionX -= 1;
     }
     _isRightMovingPossible = true;
-      if (currentPositionX == 0) {
-        _isLeftMovingPossible = false;
-      } else {
-        _isLeftMovingPossible = true;
-      }
+    if (currentPositionX == 0) {
+      _isLeftMovingPossible = false;
+    } else {
+      _isLeftMovingPossible = true;
+    }
     notifyListeners();
-    
   }
 
   void isRightMoving() {
@@ -52,13 +56,12 @@ class CurrentPositionState extends ChangeNotifier {
       _currentPositionX += 1;
     }
     _isLeftMovingPossible = true;
-      if (currentPositionX == 2) {
-        _isRightMovingPossible = false;
-      } else {
-        _isRightMovingPossible = true;
-      }
+    if (currentPositionX == 2) {
+      _isRightMovingPossible = false;
+    } else {
+      _isRightMovingPossible = true;
+    }
     notifyListeners();
-    
   }
 
   void isDownMoving() {
@@ -66,13 +69,11 @@ class CurrentPositionState extends ChangeNotifier {
       _currentPositionY -= 1;
     }
     _isUpMovingPossible = true;
-      if (currentPositionY == 0) {
-        _isDownMovingPossible = false;
-      } else {
-        _isDownMovingPossible = true;
-      }
+    if (currentPositionY == 0) {
+      _isDownMovingPossible = false;
+    } else {
+      _isDownMovingPossible = true;
+    }
     notifyListeners();
-    
   }
-  
 }

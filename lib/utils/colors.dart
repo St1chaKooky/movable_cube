@@ -8,4 +8,5 @@ class MyColors {
   static const Color amberDisActiveColor = Color.fromARGB(255, 253, 192, 111);
   static const Color grayColor = Color.fromARGB(255, 235, 235, 235);
   static const Color whiteColor = Colors.white;
+  static const Color inputColor = Color.fromARGB(255, 236, 236, 236);
 }
