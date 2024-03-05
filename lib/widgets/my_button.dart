@@ -3,7 +3,7 @@ import 'package:movable_cube/utils/colors.dart';
 
 class MyButton extends StatefulWidget {
   final bool isActive;
-  final Function onTapButton;
+  final void Function() onTapButton;
   final String text;
   const MyButton(
       {super.key,
