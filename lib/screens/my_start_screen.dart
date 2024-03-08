@@ -19,7 +19,7 @@ class _MyStartScreenState extends State<MyStartScreen> {
           children: [
             MyButton(
                 onTapButton: () {
-                  Navigator.of(context).pushNamed('/fields');
+                  Navigator.of(context).pushNamed('/start/form');
                 },
                 text: 'Go Fields page',
                 isActive: true),
@@ -28,9 +28,18 @@ class _MyStartScreenState extends State<MyStartScreen> {
             ),
             MyButton(
                 onTapButton: () {
-                  Navigator.of(context).pushNamed('/second');
+                  Navigator.of(context).pushNamed('/start/cubeNotifier');
                 },
-                text: 'Go Cube page',
+                text: 'Go Cube CN page',
+                isActive: true),
+            const SizedBox(
+              height: 10,
+            ),
+            MyButton(
+                onTapButton: () {
+                  Navigator.of(context).pushNamed('/start/cubeBloc');
+                },
+                text: 'Go Cube BloC page',
                 isActive: true),
           ],
         ),

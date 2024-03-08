@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movable_cube/changeNotifare/notifare_cube_current_position.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movable_cube/bloc/cube_position_bloc.dart';
 import 'package:movable_cube/utils/colors.dart';
 import 'package:movable_cube/widgets/my_button.dart';
 import 'package:movable_cube/widgets/my_cube_widget.dart';
@@ -12,17 +13,15 @@ class MyBlocCubeScreen extends StatefulWidget {
 }
 
 class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
-  final stateCubeNotifare =
-      CubeCurrentPositionState(1, 1, true, true, true, true);
-
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<CubePositionBloc>();
     final theme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'My Cube Screen',
+          'My Cube BloC Screen',
           style: theme.titleMedium,
         ),
       ),
@@ -35,24 +34,26 @@ class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
             color: MyColors.grayColor,
             child: Stack(
               children: [
-                ListenableBuilder(
-                    listenable: stateCubeNotifare,
-                    builder: (context, child) => MyCubeWidget(
-                          x: stateCubeNotifare.currentPositionX,
-                          y: stateCubeNotifare.currentPositionY,
-                        )),
+                BlocBuilder<CubePositionBloc, CubePositionState>(
+                    bloc: bloc,
+                    builder: (context, state) {
+                      return MyCubeWidget(
+                        x: bloc.currentPositionX,
+                        y: bloc.currentPositionY,
+                      );
+                    })
               ],
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          ListenableBuilder(
-            listenable: stateCubeNotifare,
-            builder: (context, child) => MyButton(
-              onTapButton: stateCubeNotifare.isUpMoving,
+          BlocBuilder<CubePositionBloc, CubePositionState>(
+            bloc: bloc,
+            builder: (context, state) => MyButton(
+              onTapButton: () => bloc.add(IsUpMovingCubeEvent()),
               text: 'Выше',
-              isActive: stateCubeNotifare.isUpMovingPossible,
+              isActive: bloc.isUpMovingPossible,
             ),
           ),
           const SizedBox(
@@ -61,20 +62,20 @@ class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              ListenableBuilder(
-                listenable: stateCubeNotifare,
-                builder: (context, child) => MyButton(
-                  onTapButton: stateCubeNotifare.isLeftMoving,
+              BlocBuilder<CubePositionBloc, CubePositionState>(
+                bloc: bloc,
+                builder: (context, state) => MyButton(
+                  onTapButton: () => bloc.add(IsLeftMovingCubeEvent()),
                   text: 'Влево',
-                  isActive: stateCubeNotifare.isLeftMovingPossible,
+                  isActive: bloc.isLeftMovingPossible,
                 ),
               ),
-              ListenableBuilder(
-                listenable: stateCubeNotifare,
-                builder: (context, child) => MyButton(
-                  onTapButton: stateCubeNotifare.isRightMoving,
+              BlocBuilder<CubePositionBloc, CubePositionState>(
+                bloc: bloc,
+                builder: (context, state) => MyButton(
+                  onTapButton: () => bloc.add(IsRightMovingCubeEvent()),
                   text: 'Вправо',
-                  isActive: stateCubeNotifare.isRightMovingPossible,
+                  isActive: bloc.isRightMovingPossible,
                 ),
               ),
             ],
@@ -82,12 +83,12 @@ class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
           const SizedBox(
             height: 15,
           ),
-          ListenableBuilder(
-            listenable: stateCubeNotifare,
-            builder: (context, child) => MyButton(
-              onTapButton: stateCubeNotifare.isDownMoving,
+          BlocBuilder<CubePositionBloc, CubePositionState>(
+            bloc: bloc,
+            builder: (context, state) => MyButton(
+              onTapButton: () => bloc.add(IsDownMovingCubeEvent()),
               text: 'Ниже',
-              isActive: stateCubeNotifare.isDownMovingPossible,
+              isActive: bloc.isDownMovingPossible,
             ),
           ),
         ],

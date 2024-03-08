@@ -3,14 +3,14 @@ import 'package:movable_cube/utils/colors.dart';
 import 'package:movable_cube/widgets/my_button.dart';
 import 'package:movable_cube/widgets/my_text_field.dart';
 
-class MyFieldsScreen extends StatefulWidget {
-  const MyFieldsScreen({super.key});
+class MyFormScreen extends StatefulWidget {
+  const MyFormScreen({super.key});
 
   @override
-  State<MyFieldsScreen> createState() => _MyFieldsScreenState();
+  State<MyFormScreen> createState() => _MyFormScreenState();
 }
 
-class _MyFieldsScreenState extends State<MyFieldsScreen> {
+class _MyFormScreenState extends State<MyFormScreen> {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   bool _areFieldsFilled() {
