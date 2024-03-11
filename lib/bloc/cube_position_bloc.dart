@@ -5,6 +5,7 @@ part 'cube_position_event.dart';
 part 'cube_position_state.dart';
 
 class CubePositionBloc extends Bloc<CubePositionEvent, CubePositionState> {
+  // Это должно быть в состоянии
   double currentPositionX = 1;
   double currentPositionY = 1;
 
