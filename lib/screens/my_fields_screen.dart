@@ -57,6 +57,7 @@ class _MyFormScreenState extends State<MyFormScreen> {
               child: Padding(
                   padding: const EdgeInsets.only(bottom: 30),
                   child: MyButton(
+                      // Такие большие функции лучше выносить
                       onTapButton: () {
                         showDialog(
                             context: context,

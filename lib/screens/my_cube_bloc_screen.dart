@@ -15,7 +15,10 @@ class MyBlocCubeScreen extends StatefulWidget {
 class _MyBlocCubeScreenState extends State<MyBlocCubeScreen> {
   @override
   Widget build(BuildContext context) {
+    // Тк, ты находишься в stateful виджете у тебя есть getter context
+    // можешь вынести из build метода получение блока из контекста.
     final bloc = context.read<CubePositionBloc>();
+    // Тему тоже.
     final theme = Theme.of(context).textTheme;
     return Scaffold(
       appBar: AppBar(
